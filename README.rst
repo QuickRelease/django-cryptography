@@ -1,3 +1,16 @@
+Foreword
+========
+This is a fork of the original django-cryptography project
+which is not being actively maintained at this time.
+Some things may be misleading, but have not been updated to minimise
+the changes from the original project.
+For example, to install this fork, do not use the instructions below,
+but rather:
+
+.. code-block:: console
+
+   pip install git+ssh://git@github.com/QuickRelease/django-cryptography.git
+
 Django Cryptography
 ===================
 
