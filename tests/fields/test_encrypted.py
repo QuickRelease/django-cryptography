@@ -130,8 +130,13 @@ class TestChecks(TestCase):
         self.assertEqual("Encrypted Integer", field.description)
 
     def test_field_checks(self):
+        # We assume that the purpose of this test is to
+        # ensure that the inner field's checks are run,
+        # not that any particular error is correctly raised.
+        # As such we have arbitrarily chosen a new "bad configuration"
+        # now that the historical "bad configuration" no longer raises an error.
         class BadField(models.Model):
-            field = encrypt(models.CharField())
+            field = encrypt(models.CharField(max_length=-1))
 
             class Meta:
                 app_label = "myapp"
@@ -139,8 +144,7 @@ class TestChecks(TestCase):
         model = BadField()
         errors = model.check()
         self.assertEqual(len(errors), 1)
-        # The inner CharField is missing a max_length.
-        self.assertEqual("fields.E120", errors[0].id)
+        self.assertEqual("fields.E121", errors[0].id)
         self.assertIn("max_length", errors[0].msg)
 
     def test_invalid_base_fields(self):
