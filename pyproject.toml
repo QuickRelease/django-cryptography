@@ -63,7 +63,6 @@ envlist =
     {py38,py39,py310}-django32,
     {py38,py39,py310}-django41,
     {py38,py39,py310,py311}-django42,
-    {py310,py311}-djangomain,
 isolated_build = True
 
 [testenv]
