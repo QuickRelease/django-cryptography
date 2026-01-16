@@ -44,7 +44,7 @@ jobs:
 
       - name: Run tox targets for ${{ matrix.python-version }}
         run: |
-          tox run -f py$(echo ${{ matrix.python-version }} | tr -d .)
+          tox run -f py$(echo ${{ matrix.python-version }} | tr -d .) -c pyproject.toml
           coverage xml
 
       - name: Upload coverage to Codecov
